@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Auréa Estates | Imóveis que não existem duas vezes</title>
+<meta name="description" content="Imobiliária de alto padrão: residências exclusivas no Brasil e no exterior, com atendimento reservado.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;600&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+<link rel="preload" as="image" href="frames/frame-0001.jpg">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<header class="nav" id="nav">
+  <a class="brand" href="#topo">Auréa Estates</a>
+  <nav id="menu" aria-label="Principal">
+    <a href="#imoveis">Imóveis</a><a href="#servicos">Serviços</a><a href="#simulador">Simulador</a><a href="#contato">Contato</a>
+  </nav>
+  <a class="btn btn--sm" href="#contato">Agendar consultoria</a>
+  <button class="burger" id="burger" aria-label="Abrir menu" aria-expanded="false" aria-controls="menu"><span></span><span></span></button>
+</header>
+
+<!-- HERO: animação de scroll -->
+<section class="scroll-stage" id="topo">
+  <div class="sticky">
+    <canvas id="frame-canvas" role="img" aria-label="Câmera saindo do interior de uma residência para a área externa"></canvas>
+    <div class="shade"></div>
+
+    <div class="chapter" data-from="0" data-to="0.2">
+      <h1>Imóveis que não existem duas vezes.</h1>
+      <p>Residências de alto padrão no Brasil e no exterior, apresentadas com a discrição que merecem.</p>
+      <ul class="badges"><li>Curadoria privada</li><li>Atendimento confidencial</li><li>Negócios em 12 países</li></ul>
+    </div>
+    <div class="chapter" data-from="0.3" data-to="0.5"><h2>Cada ambiente, pensado para a luz.</h2></div>
+    <div class="chapter" data-from="0.6" data-to="0.85"><h2>Da sala ao horizonte, sem interrupção.</h2><p>Conheça as residências do nosso portfólio.</p><a class="btn" href="#imoveis">Ver imóveis</a></div>
+
+    <aside class="feature" data-from="0" data-to="0.2">
+      <p class="feature__tag">Em destaque</p>
+      <h3>Villa Atlântica</h3>
+      <p>Angra dos Reis, RJ · 6 suítes · 1.250 m²</p>
+      <a href="#imoveis" class="feature__link">Ver detalhes</a>
+    </aside>
+
+    <p class="hint" data-from="0" data-to="0.03">Role para explorar</p>
+    <div class="rail" aria-hidden="true"><i></i></div>
+
+    <div class="loader" role="status" aria-live="polite">
+      <p class="brand">Auréa Estates</p>
+      <div class="loader__bar"><span class="loader__fill"></span></div>
+      <p class="loader__text">Carregando 0%</p>
+    </div>
+  </div>
+</section>
+
+<main>
+  <section class="section">
+    <div class="wrap">
+      <p class="statement">Desde 1987 acompanhamos famílias na compra e venda de residências excepcionais: mais de R$ 4 bilhões negociados, sem vitrine e sem pressa.</p>
+    </div>
+  </section>
+
+  <section class="section section--tight" id="imoveis">
+    <div class="wrap">
+      <div class="head">
+        <h2>Residências em portfólio</h2>
+        <div class="filters" role="group" aria-label="Filtrar por tipo">
+          <button aria-pressed="true" data-cat="todos">Todos</button>
+          <button aria-pressed="false" data-cat="litoral">Litoral</button>
+          <button aria-pressed="false" data-cat="campo">Campo</button>
+          <button aria-pressed="false" data-cat="cidade">Cidade</button>
+        </div>
+      </div>
+      <div class="grid" id="grid"></div>
+    </div>
+  </section>
+
+  <section class="section section--mist" id="servicos">
+    <div class="wrap split">
+      <div>
+        <h2>Um atendimento que começa pela escuta.</h2>
+        <p class="lead">Cada família procura algo diferente. Por isso não existe catálogo: existe conversa.</p>
+      </div>
+      <div class="services">
+        <details name="svc" open><summary>Compra e venda reservada</summary><p>Negociações conduzidas com sigilo, avaliação criteriosa e acesso a imóveis que não chegam ao mercado aberto.</p></details>
+        <details name="svc"><summary>Consultoria de investimento</summary><p>Análise de localização, liquidez e perspectiva de valorização para quem enxerga o imóvel como patrimônio.</p></details>
+        <details name="svc"><summary>Imóveis no exterior</summary><p>Parceiros locais, apoio jurídico e tributário e acompanhamento da busca até a escritura.</p></details>
+        <details name="svc"><summary>Gestão e curadoria de patrimônio</summary><p>Acompanhamento de portfólio, reformas, locação de alto padrão e preparação para venda.</p></details>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--dark" id="simulador">
+    <div class="wrap split">
+      <div>
+        <h2>Simule o financiamento.</h2>
+        <p class="lead">Uma estimativa rápida para orientar a conversa. Taxa ilustrativa de 10,5% ao ano, tabela Price.</p>
+        <div class="controls">
+          <label>Valor do imóvel <output id="o-valor"></output><input type="range" id="valor" min="2000000" max="60000000" step="500000" value="20000000"></label>
+          <label>Entrada <output id="o-entrada"></output><input type="range" id="entrada" min="20" max="80" step="5" value="40"></label>
+          <label>Prazo <output id="o-prazo"></output><input type="range" id="prazo" min="5" max="35" step="1" value="25"></label>
+        </div>
+      </div>
+      <div class="result" aria-live="polite">
+        <p>Parcela estimada</p>
+        <strong id="parcela"></strong>
+        <dl><div><dt>Entrada</dt><dd id="r-entrada"></dd></div><div><dt>Valor financiado</dt><dd id="r-fin"></dd></div></dl>
+        <small>Simulação sem valor contratual. Condições sujeitas a análise de crédito.</small>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="contato">
+    <div class="wrap split">
+      <div>
+        <h2>Converse com um consultor.</h2>
+        <p class="lead">Conte o que procura. Retornamos em até um dia útil, pelo canal que você preferir.</p>
+        <p><a class="btn btn--ghost-dark" id="wa-link" href="#">Chamar no WhatsApp</a></p>
+      </div>
+      <form id="form" class="form" novalidate>
+        <label>Nome<input name="nome" autocomplete="name" required></label>
+        <label>E-mail ou WhatsApp<input name="contato" autocomplete="email" required></label>
+        <label>Interesse<select name="interesse"><option>Comprar</option><option>Vender</option><option>Investir</option><option>Imóvel no exterior</option></select></label>
+        <label>Mensagem<textarea name="msg" rows="4"></textarea></label>
+        <button class="btn" type="submit">Enviar solicitação</button>
+        <p class="form__status" id="status" role="status"></p>
+      </form>
+    </div>
+  </section>
+</main>
+
+<footer class="footer">
+  <p class="brand">Auréa Estates</p>
+  <p>Imóveis de alto padrão · Brasil e exterior</p>
+  <p class="footer__small">Protótipo de demonstração. Imóveis, valores e contatos são fictícios.</p>
+</footer>
+
+<a class="btn fab" id="fab" href="#">Falar com um consultor</a>
+
+<dialog id="dlg" aria-labelledby="d-name">
+  <img id="d-img" alt="">
+  <div class="dlg__body">
+    <p id="d-place" class="dlg__place"></p>
+    <h3 id="d-name"></h3>
+    <p id="d-desc"></p>
+    <p id="d-specs" class="dlg__specs"></p>
+    <p class="dlg__price" id="d-price"></p>
+    <div class="dlg__actions"><a class="btn" id="d-wa" href="#">Falar sobre este imóvel</a><button class="btn btn--ghost-dark" id="d-close" type="button">Fechar</button></div>
+  </div>
+</dialog>
+
+<script src="script.js"></script>
+</body>
+</html>
